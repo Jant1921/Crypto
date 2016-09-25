@@ -25,6 +25,10 @@ namespace CriptoSystem
             Console.WriteLine(tra.decodificar(tra.codificar("esto es un secreto no lo puedo decir aserpros")));
             */
 
+            /*CBinaria bin = new CBinaria();
+            Console.WriteLine(bin.codificar("tarea programada"));
+            Console.WriteLine(bin.decodificar(bin.codificar("tarea programada como estas")));
+            */
             Console.ReadKey();
         }
 
