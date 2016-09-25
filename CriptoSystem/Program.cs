@@ -13,7 +13,14 @@ namespace CriptoSystem
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hola mundo :)");
+            //Console.WriteLine("Hola mundo :)");
+            string prueba = "tarea programada criptografia de datos zygalski henryk";
+            /*Console.WriteLine(prueba);
+            Vigenere vi = new Vigenere();
+            Console.WriteLine(vi.cod(prueba, 23));
+            Console.WriteLine(vi.decod(vi.cod(prueba, 23), 23));*/
+
+
             Console.ReadKey();
         }
 
