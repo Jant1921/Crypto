@@ -10,12 +10,22 @@ namespace CriptoSystem
     {
         public override string codificar(string pTexto)
         {
-            throw new NotImplementedException();
+            string[] temp = pTexto.Split(' ');
+            string res = "";
+            for(int i = 0; i < temp.Length; i++)
+            {
+                for(int j = temp[i].Length - 1; j >= 0; j--)
+                {
+                    res = res + temp[i].ElementAt(j);
+                }
+                res = res + " ";
+            }
+            return res;
         }
 
         public override string decodificar(string pTexto)
         {
-            throw new NotImplementedException();
+            return codificar(pTexto);
         }
     }
 }
