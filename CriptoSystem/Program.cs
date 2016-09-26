@@ -29,6 +29,11 @@ namespace CriptoSystem
             Console.WriteLine(bin.codificar("tarea programada"));
             Console.WriteLine(bin.decodificar(bin.codificar("tarea programada como estas")));
             */
+            /*
+            PalabraClave pal = new PalabraClave();
+            Console.WriteLine(pal.codi("tarea programada de codificacion", "tango"));
+            Console.WriteLine(pal.decodi(pal.codi("tarea programada de codificacion", "tango"), "tango"));
+            */
             Console.ReadKey();
         }
 
