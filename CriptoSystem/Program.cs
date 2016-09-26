@@ -11,9 +11,11 @@ namespace CriptoSystem
 {
     class Program
     {
+        string[] listaAlfabeto = {new Alfabeto("abcdefghijklmnopqrstuvwxyz","predetermindo"};
+
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hola mundo :)");
+            Console.WriteLine("Hola mundo :)");
             string prueba = "tarea programada criptografia de datos zygalski henryk";
             /*Console.WriteLine(prueba);
             Vigenere vi = new Vigenere();

@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alfabeto.cs" />
     <Compile Include="CBinaria.cs" />
     <Compile Include="PalabraClave.cs" />
     <Compile Include="Pdf.cs" />
