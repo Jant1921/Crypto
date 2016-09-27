@@ -11,7 +11,7 @@ namespace CriptoSystem
 {
     class Program
     {
-        string[] listaAlfabeto = {new Alfabeto("abcdefghijklmnopqrstuvwxyz","predetermindo"};
+        //string[] listaAlfabeto = {new Alfabeto("abcdefghijklmnopqrstuvwxyz","predetermindo"};
 
         static void Main(string[] args)
         {
@@ -36,7 +36,14 @@ namespace CriptoSystem
             Console.WriteLine(pal.codi("tarea programada de codificacion", "tango"));
             Console.WriteLine(pal.decodi(pal.codi("tarea programada de codificacion", "tango"), "tango"));
             */
+            
+            GUI ventana = new GUI();
+            //ventana.ShowDialog();
+            ventana.ShowDialog();
             Console.ReadKey();
+            //ventana.Visible = true;
+            //ventana.Show = true;
+            //GUI ventana = new GUI();
         }
 
     }
