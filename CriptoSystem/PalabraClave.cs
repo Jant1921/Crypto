@@ -9,26 +9,13 @@ namespace CriptoSystem
     class PalabraClave : Traductor
     {
         public string alfabeto = "abcdefghijklmnopqrstuvwxyz";
-        public override string codificar(string pTexto)
+        public override string tipoValor()
         {
-            throw new NotImplementedException();
+            string p = "";
+            return p.GetType().ToString().Split('.')[p.GetType().ToString().Split('.').Length - 1] ;
         }
-        public string codi(string pTexto, string palabraClave)
-        {
-            string res = "";
-            string[] arregloPalabras = pTexto.Split(' ');
-            for(int i = 0; i < arregloPalabras.Length; i++)
-            {
-                for(int j = 0; j < arregloPalabras[i].Length; j++)
-                {
-                    res = res + alfabeto.ElementAt( (alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) +1+ (alfabeto.IndexOf(palabraClave.ElementAt(j%palabraClave.Length))))% alfabeto.Length);
-                }
-                res = res + " ";
-            }
 
-            return res;
-        }
-        public string decodi(string pTexto, string palabraClave)
+        public override string codificar(string pTexto, string pValor)
         {
             string res = "";
             string[] arregloPalabras = pTexto.Split(' ');
@@ -36,15 +23,7 @@ namespace CriptoSystem
             {
                 for (int j = 0; j < arregloPalabras[i].Length; j++)
                 {
-                    if (0> (alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (alfabeto.IndexOf(palabraClave.ElementAt(j % palabraClave.Length)))) % alfabeto.Length)
-                    {
-                        res = res + alfabeto.ElementAt((alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (alfabeto.IndexOf(palabraClave.ElementAt(j % palabraClave.Length))) + alfabeto.Length));
-                    }
-                    else
-                    {
-                        res = res + alfabeto.ElementAt((alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (alfabeto.IndexOf(palabraClave.ElementAt(j % palabraClave.Length)))));
-                    }
-                    
+                    res = res + alfabeto.ElementAt((alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) + 1 + (alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length)))) % alfabeto.Length);
                 }
                 res = res + " ";
             }
@@ -52,10 +31,28 @@ namespace CriptoSystem
             return res;
         }
 
-
-        public override string decodificar(string pTexto)
+        public override string decodificar(string pTexto, string pValor)
         {
-            throw new NotImplementedException();
+            string res = "";
+            string[] arregloPalabras = pTexto.Split(' ');
+            for (int i = 0; i < arregloPalabras.Length; i++)
+            {
+                for (int j = 0; j < arregloPalabras[i].Length; j++)
+                {
+                    if (0 > (alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length)))) % alfabeto.Length)
+                    {
+                        res = res + alfabeto.ElementAt((alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length))) + alfabeto.Length));
+                    }
+                    else
+                    {
+                        res = res + alfabeto.ElementAt((alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length)))));
+                    }
+
+                }
+                res = res + " ";
+            }
+
+            return res;
         }
     }
 }

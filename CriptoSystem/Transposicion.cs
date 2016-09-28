@@ -8,7 +8,7 @@ namespace CriptoSystem
 {
     class Transposicion : Traductor
     {
-        public override string codificar(string pTexto)
+        public override string codificar(string pTexto,string pValor)
         {
             string[] temp = pTexto.Split(' ');
             string res = "";
@@ -23,9 +23,15 @@ namespace CriptoSystem
             return res;
         }
 
-        public override string decodificar(string pTexto)
+        public override string decodificar(string pTexto, string pValor)
         {
-            return codificar(pTexto);
+            return codificar(pTexto,pValor);
+        }
+
+
+        public override string tipoValor()
+        {
+            return null;
         }
     }
 }

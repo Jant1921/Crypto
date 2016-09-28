@@ -20,9 +20,8 @@ namespace CriptoSystem
                 Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
                 PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(nombreArchivo, FileMode.Create));
                 doc.Open();
-
                 Paragraph paragraph = new Paragraph(componerString(pTexto));
-
+        
                 doc.Add(paragraph);
                 doc.Close();
                 return true;

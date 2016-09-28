@@ -19,6 +19,15 @@ namespace CriptoSystem
             displayTime();
             Codificar.Checked = true;
             timer1.Enabled = true;
+            textBox3.Enabled = false;
+            rellenarListaAlgoritmos();
+
+        }
+        private void rellenarListaAlgoritmos()
+        {
+            listBox1.Items.Add("Vigenere");
+            listBox1.Items.Add("Transposicion");
+
         }
 
         private void GUI_Load(object sender, EventArgs e)
@@ -54,6 +63,7 @@ namespace CriptoSystem
             {
                 Codificar.Checked = true;
             }
+            traducir();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -69,6 +79,52 @@ namespace CriptoSystem
         private void timer1_Tick(object sender, EventArgs e)
         {
             displayTime();
+        }
+
+        private void traducir()
+        {
+            Vigenere vi = new Vigenere();
+            if (Codificar.Checked)
+            {
+                textBox3.Text = vi.codificar(textBox1.Text, textBox2.Text);
+            }
+            else
+            {
+                textBox3.Text = vi.decodificar(textBox1.Text, textBox2.Text);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            traducir();
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            traducir();
+            //desabilitarClave();
+        }
+        private void desabilitarClave()
+        {
+            textBox2.Enabled = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Clipboard.SetDataObject(textBox2.Text);
+            Clipboard.SetText(textBox3.Text);
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -45,7 +45,7 @@ namespace CriptoSystem
                 }
                 return ceros(res);
         }
-        public override string codificar(string pTexto)
+        public override string codificar(string pTexto, string pValor)
         {
             string res = "";
             for(int i = 0; i < pTexto.Length; i++)
@@ -79,7 +79,7 @@ namespace CriptoSystem
             return numero;
         }
 
-        public override string decodificar(string pTexto)
+        public override string decodificar(string pTexto, string pValor)
         {
             string[] numeros = pTexto.Split(' ');
             string res = "";
@@ -94,6 +94,12 @@ namespace CriptoSystem
                 }
             }
             return res;
+        }
+
+
+        public override string tipoValor()
+        {
+            return null;
         }
     }
 }
