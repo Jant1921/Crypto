@@ -5,35 +5,23 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CriptoSystem
-{
-    class VistaConsola
-    {
-        
-        
-        CryptoSystem controller = new CryptoSystem();
-        bool[] algoritmos;
-        IEnumerable<Traductor> listaAlgoritmos;
-        string[] clavesAlgoritmos;
-        bool[] persistencia;
-
-        bool[] listarAlgoritmos(string pTexto, int tamanoListaAlgoritmos)
-        {
+namespace CriptoSystem {
+    class VistaConsola {
+        ControladorConsola controlador = new ControladorConsola();
+        public VistaConsola() {
             menu();
             Console.ReadKey();
         }
 
-        void codificar()
-        {
+        void codificar() {
             Console.WriteLine("Ingrese el texto a codificar: ");
             string texto = Console.ReadLine();
             //controlador.codificar();
             Console.WriteLine("Resultado: ");
-            
+
         }
 
-        void decodificar()
-        {
+        void decodificar() {
             Console.WriteLine("Ingrese el texto a decodificar: ");
             string texto = Console.ReadLine();
             //controlador.decodificar();
@@ -41,11 +29,9 @@ namespace CriptoSystem
 
         }
 
-        void menu()
-        {
+        void menu() {
             bool flag = false;
-            while (!flag)
-            {
+            while(!flag) {
                 Console.WriteLine("Digite una opcion: ");
                 Console.WriteLine();
                 Console.WriteLine("1. Codificar");
@@ -54,7 +40,7 @@ namespace CriptoSystem
                 Console.WriteLine("0. Salir");
                 string respuesta = Console.ReadLine();
 
-                switch(respuesta){
+                switch(respuesta) {
                     case "1":
                         Console.WriteLine("Codificando ..");
                         codificar();
@@ -78,7 +64,7 @@ namespace CriptoSystem
                         break;
                 }
 
-        }
+            }
         }
     }
 }

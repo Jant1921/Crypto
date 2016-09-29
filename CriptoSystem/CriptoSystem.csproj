@@ -60,8 +60,7 @@
     <Compile Include="ControladorConsola.cs" />
     <Compile Include="ControladorEscritorio.cs" />
     <Compile Include="Datos.cs" />
-    <Compile Include="FabricaPersistencia.cs" />
-    <Compile Include="FabricaTraductor.cs" />
+    <Compile Include="Fabrica.cs" />
     <Compile Include="SingletonAlfabeto.cs" />
     <Compile Include="VistaEscritorio.cs">
       <SubType>Form</SubType>
