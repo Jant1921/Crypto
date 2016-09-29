@@ -19,11 +19,20 @@ namespace CriptoSystem
             return new Alfabeto("abcdefghijklmnopqrstuvwxyz","abcdario");
         }
 
-        public static Alfabeto getInstance(string pCaracteres, string pNombre)
+        public static Alfabeto getInstance()
         {
             if(alfabeto == null)
             {
                 alfabeto=crearAlfabeto();
+            }
+            return alfabeto;
+        }
+
+        public static Alfabeto getInstance(string pCaracteres, string pNombre)
+        {
+            if (alfabeto == null)
+            {
+                alfabeto = new Alfabeto(pCaracteres, pNombre);
             }
             return alfabeto;
         }
