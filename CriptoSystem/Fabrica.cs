@@ -11,7 +11,7 @@ namespace CriptoSystem {
         private IEnumerable<Traductor> traductores;
         private IEnumerable<Persistencia> persistencia;
 
-        Fabrica() {
+        public Fabrica() {
             traductores = buscarAlgoritmos<Traductor>();
             persistencia = buscarAlgoritmos<Persistencia>();
         }
@@ -26,11 +26,11 @@ namespace CriptoSystem {
             return algoritmos;
         }
 
-        IEnumerable<Traductor> getTraductores() {
+        public IEnumerable<Traductor> getTraductores() {
             return traductores;
         }
 
-        IEnumerable<Persistencia> getAlgoritmosPersistencia() {
+        public IEnumerable<Persistencia> getAlgoritmosPersistencia() {
             return persistencia;
         }
     }

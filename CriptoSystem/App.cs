@@ -10,6 +10,7 @@ namespace CriptoSystem
     {
         static void seleccionarVista()
         {
+                  
             Console.WriteLine("----CryptoSystem----");
             Console.WriteLine("1. Modo consola\n2. Modo grafico");
             Console.Write("Indique en que modo desea utilizar el sistema: ");
@@ -31,21 +32,21 @@ namespace CriptoSystem
             }
 
         }
-        static void Main(string[] args)
-        {
-            App.seleccionarVista();
-
-
-
+        static void Main(string[] args) {
             /*
-            VistaEscritorio ventana = new VistaEscritorio();
-            ventana.ShowDialog();
-            Console.ReadKey();
-            VistaConsola vista = new VistaConsola();
-            //vista.pru();
-            //Console.ReadKey();
-            vista.menu();
+            Fabrica fab = new Fabrica();
+            string[] dsa = { "sd", "sda"};
+            Console.WriteLine(fab.getTraductores().ElementAt(0).codificar("jose", ""));
+            fab.getAlgoritmosPersistencia().ElementAt(0).guardarArchivo("file1",dsa);
+            Console.WriteLine(fab.getTraductores().ElementAt(0).GetType().ToString().Split('.').ElementAt(1));
             */
+
+            App.seleccionarVista();
+                
+
+
+
+           
         }
     }
 }
