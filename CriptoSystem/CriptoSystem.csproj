@@ -59,6 +59,7 @@
     <Compile Include="CBinaria.cs" />
     <Compile Include="ControladorConsola.cs" />
     <Compile Include="ControladorEscritorio.cs" />
+    <Compile Include="Datos.cs" />
     <Compile Include="FabricaPersistencia.cs" />
     <Compile Include="FabricaTraductor.cs" />
     <Compile Include="SingletonAlfabeto.cs" />
