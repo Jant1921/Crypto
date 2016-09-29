@@ -17,6 +17,7 @@ namespace CriptoSystem
             switch (eleccion)
             {
                 case "1":
+                    Console.Clear();
                     new VistaConsola();
                     break;
                 case "2":

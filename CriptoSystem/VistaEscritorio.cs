@@ -8,10 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Runtime.InteropServices;
+
+
 namespace CriptoSystem
 {
     public partial class VistaEscritorio : Form
     {
+
+        [DllImport("kernel32.dll")]
+        static extern IntPtr GetConsoleWindow();
+
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        const int SW_HIDE = 0;
+
         bool decodifica = true;
         public VistaEscritorio()
         {
@@ -22,21 +34,18 @@ namespace CriptoSystem
             textBox3.Enabled = false;
             rellenarListaAlgoritmos();
 
+            
+            var handle = GetConsoleWindow();
+            ShowWindow(handle, SW_HIDE);
+            ShowDialog();
+            //Show();
+
+
         }
         private void rellenarListaAlgoritmos()
         {
             listBox1.Items.Add("Vigenere");
             listBox1.Items.Add("Transposicion");
-
-        }
-
-        private void GUI_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -66,13 +75,8 @@ namespace CriptoSystem
             traducir();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
         private void displayTime()
         {
-            //label3.Text = DateTime.Now.ToShortTimeString();
             label3.Text = DateTime.Now.ToString();
         }
 
@@ -86,45 +90,28 @@ namespace CriptoSystem
             Vigenere vi = new Vigenere();
             if (Codificar.Checked)
             {
-                textBox3.Text = vi.codificar(textBox1.Text, textBox2.Text);
+                textBox3.Text = vi.codificar(textBox1.Text, "12");
             }
             else
             {
-                textBox3.Text = vi.decodificar(textBox1.Text, textBox2.Text);
+                textBox3.Text = vi.decodificar(textBox1.Text, "12");
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            traducir();
 
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            traducir();
-            //desabilitarClave();
-        }
-        private void desabilitarClave()
-        {
-            textBox2.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Clipboard.SetDataObject(textBox2.Text);
-            Clipboard.SetText(textBox3.Text);
-
+            traducir();
+           
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
     }
 }
