@@ -11,7 +11,7 @@ namespace CriptoSystem
     {
         
         
-        CryptoSystem controller = new CryptoSystem();
+        CryptoSystem controller = new ControladorConsola();
         bool[] algoritmos;
         IEnumerable<Traductor> listaAlgoritmos;
         string[] clavesAlgoritmos;
