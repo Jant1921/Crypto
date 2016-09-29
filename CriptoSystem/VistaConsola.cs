@@ -9,9 +9,17 @@ namespace CriptoSystem
 {
     class VistaConsola
     {
-        
-        
-        CryptoSystem controller = new CryptoSystem();
+
+
+        public VistaConsola()
+        {
+            Console.WriteLine("entro");
+            menu();
+            Console.ReadKey();
+        }
+
+
+        CryptoSystem controller = new ControladorConsola();
         bool[] algoritmos;
         IEnumerable<Traductor> listaAlgoritmos;
         string[] clavesAlgoritmos;
@@ -287,6 +295,9 @@ namespace CriptoSystem
             return objects;
         }
 
+
+        /*
+
         [STAThread]
         static void Main(string[] args)
         {
@@ -337,10 +348,11 @@ namespace CriptoSystem
             //ventana.ShowDialog();
             ventana.ShowDialog();
             Console.ReadKey();
-            */
+            
             //ventana.Visible = true;
             //ventana.Show = true;
             //GUI ventana = new GUI();
         }
+    */
     }
 }
