@@ -1,6 +1,6 @@
 ﻿namespace CriptoSystem
 {
-    partial class GUI
+    partial class VistaEscritorio
     {
         /// <summary>
         /// Required designer variable.

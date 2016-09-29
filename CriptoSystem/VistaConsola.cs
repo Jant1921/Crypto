@@ -290,7 +290,7 @@ namespace CriptoSystem
         [STAThread]
         static void Main(string[] args)
         {
-            GUI ventana = new GUI();
+            VistaEscritorio ventana = new VistaEscritorio();
             ventana.ShowDialog();
             Console.ReadKey();
             VistaConsola vista = new VistaConsola();

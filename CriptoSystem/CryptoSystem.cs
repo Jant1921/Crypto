@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace CriptoSystem
 {
-    class CryptoSystem
+    abstract class CryptoSystem
     {
         //string[] listaAlfabeto = {new Alfabeto("abcdefghijklmnopqrstuvwxyz","predetermindo"};
 

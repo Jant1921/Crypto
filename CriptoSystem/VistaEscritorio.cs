@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace CriptoSystem
 {
-    public partial class GUI : Form
+    public partial class VistaEscritorio : Form
     {
         bool decodifica = true;
-        public GUI()
+        public VistaEscritorio()
         {
             InitializeComponent();
             displayTime();
