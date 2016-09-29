@@ -12,9 +12,9 @@ namespace CriptoSystem
         private string fraseOriginal;
         private string fraseResultado;
         private bool codifica;
-        public string nombreAlgoritmo;
-        public string valorCodificacion;
-        public Alfabeto alfabeto;
+        private string nombreAlgoritmo;
+        private string valorCodificacion;
+        private Alfabeto alfabeto;
 
         public string Fecha {
             get { return fecha; }

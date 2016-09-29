@@ -9,14 +9,16 @@ namespace CriptoSystem
     class Vigenere : Traductor
     {
         public string alfabeto = "abcdefghijklmnopqrstuvwxyz";
-        public override string tipoValor()
-        {
-            int p=1;
-            return p.GetType().ToString().Split('.')[p.GetType().ToString().Split('.').Length - 1].ToString();
-        }
+        private Datos dto;
 
-        public override string codificar(string pTexto, string pValor)
-        {
+        public Datos Dto {
+            get { return dto; }
+            set { dto = value; }
+        }
+        
+        public override void codificar(){
+            string pTexto = Dto.FraseOriginal;
+            string pValor = Dto.ValorCodificacion;
             int val = Int32.Parse(pValor);
             string res = "";
             int primero = val / 10;
@@ -43,11 +45,12 @@ namespace CriptoSystem
                     }
                 }
             }
-            return res;
+            Dto.FraseResultado = res;
         }
 
-        public override string decodificar(string pTexto, string pValor)
-        {
+        public override void decodificar(){
+            string pTexto = Dto.FraseOriginal;
+            string pValor = Dto.ValorCodificacion;
             int val = Int32.Parse(pValor);
             string res = "";
             int primero = val / 10;
@@ -88,7 +91,7 @@ namespace CriptoSystem
                     }
                 }
             }
-            return res;
+            Dto.FraseResultado = res;
         }
     }
 }
