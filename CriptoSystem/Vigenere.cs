@@ -91,7 +91,7 @@ namespace CriptoSystem
         protected override void cargarDatos() {
             Alfabeto = Dto.Alfabeto.Caracteres;
             pTexto = Dto.FraseOriginal;
-            pValor = Dto.ValorCodificacion;
+            pValor = "23";
             Dto.NombreAlgoritmo = "Vigenere";
         }
 
