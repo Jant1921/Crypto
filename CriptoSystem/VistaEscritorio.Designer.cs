@@ -159,6 +159,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "VistaEscritorio";
             this.Text = "GUI";
+            this.Load += new System.EventHandler(this.VistaEscritorio_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
