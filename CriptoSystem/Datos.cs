@@ -18,7 +18,7 @@ namespace CriptoSystem
 
         public string getDatos() {
             return "Fecha: " + Fecha + "\n" +
-                   "Algoritmo: " + nombreAlgoritmo + "\n" +
+                   "Algoritmo: " + NombreAlgoritmo + "\n" +
                    "Tipo de Traduccion: " + TipoTraduccion + "\n" +
                    "Frase Original: " + FraseOriginal + "\n" +
                    "Resultado: " + FraseResultado + "\n";
@@ -26,7 +26,7 @@ namespace CriptoSystem
 
         public string Fecha {
             get { return fecha; }
-            set { fecha = DateTime.Now.ToString(); }
+            set { fecha = value; }
         }
 
         public string FraseOriginal {

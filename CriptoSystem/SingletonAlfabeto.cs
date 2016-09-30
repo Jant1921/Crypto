@@ -9,14 +9,10 @@ namespace CriptoSystem
     class SingletonAlfabeto
     {
         private static Alfabeto alfabeto;
-        private SingletonAlfabeto()
-        {
-            
-        }
-
+        
         private static Alfabeto crearAlfabeto()
         {
-            return new Alfabeto("abcdefghijklmnopqrstuvwxyz","abcdario");
+            return new Alfabeto();
         }
 
         public static Alfabeto getInstance()
@@ -28,13 +24,5 @@ namespace CriptoSystem
             return alfabeto;
         }
 
-        public static Alfabeto getInstance(string pCaracteres, string pNombre)
-        {
-            if (alfabeto == null)
-            {
-                alfabeto = new Alfabeto(pCaracteres, pNombre);
-            }
-            return alfabeto;
-        }
     }
 }
