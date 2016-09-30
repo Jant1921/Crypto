@@ -87,15 +87,23 @@ namespace CriptoSystem
 
         private void traducir()
         {
+            Datos datos = new Datos();
             Vigenere vi = new Vigenere();
+            Traductor.Dto = datos;
+            Traductor.Dto.FraseOriginal = textBox1.Text;
+            Traductor.Dto.ValorCodificacion = "12";
+            Alfabeto alfabeto = new Alfabeto("abcdefghijklmnopqrstuvwxyz","abc");
+            Traductor.Dto.Alfabeto = alfabeto;
             if (Codificar.Checked)
             {
-                textBox3.Text = vi.codificar(textBox1.Text, "12");
+                vi.codificar();
+                
             }
             else
             {
-                textBox3.Text = vi.decodificar(textBox1.Text, "12");
+                vi.decodificar();
             }
+            textBox3.Text = Traductor.Dto.FraseResultado;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

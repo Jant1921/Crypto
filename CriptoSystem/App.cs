@@ -33,13 +33,13 @@ namespace CriptoSystem
 
         }
         static void Main(string[] args) {
-            
+            /*
             Fabrica fab = new Fabrica();
             string[] dsa = { "sd", "sda"};
             Console.WriteLine(fab.getTraductores().ElementAt(0).codificar("jose", ""));
             fab.getAlgoritmosPersistencia().ElementAt(0).guardarArchivo("file1",dsa);
             Console.WriteLine(fab.getTraductores().ElementAt(0).GetType().ToString().Split('.').ElementAt(1));
-            
+            */
 
             App.seleccionarVista();
                 
