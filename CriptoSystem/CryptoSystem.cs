@@ -13,50 +13,50 @@ namespace CriptoSystem
 {
     abstract class CryptoSystem
     {
-        
-        /*
-        Datos objetoDatos = new Datos();
-        Alfabeto alfabeto = SingletonAlfabeto.getInstance();
-        Fabrica fab = new Fabrica();
-        Persistencia[] persistencia;
-        Traductor[] traductor;
 
-        /*
-        //string[] listaAlfabeto = {new Alfabeto("abcdefghijklmnopqrstuvwxyz","predetermindo"};
-        public bool guardarResultado(int pTipoArchivo)
-        {
+        protected Traductor[] traductores;
+        protected Persistencia[] persistencia;
+        protected Datos listaDatos;
+        protected Fabrica fabrica;
+        protected Alfabeto alfabeto;
 
+        public CryptoSystem() {
+            listaDatos = new Datos();
+            alfabeto = SingletonAlfabeto.getInstance();
+            fabrica = new Fabrica();
+            listaDatos.Alfabeto = alfabeto;
+            Traductor.Dto = listaDatos;
+            traductores = fabrica.getTraductores().ToArray();
+            persistencia = fabrica.getAlgoritmosPersistencia().ToArray();            
         }
 
-        public void codificar(int pTipoAlgoritmo)
-        {
 
-        }
-        public void decodificar(int pTipoAlgoritmo)
-        {
+        protected abstract bool guardarResultado(int pTipoArchivo);
+        public abstract void codificar(string pTexto,int pTipoAlgoritmo);
+        public abstract void decodificar(string pTexto, int pTipoAlgoritmo);
+        public abstract string retornarResultado();
 
-        }
-
-        /*
-
-        public bool setFrase(string pFrase)
-        {
-            objetoDatos.Frase = pFrase;
+        public string getNombreAlgoritmo(Object algoritmo) {
+            return algoritmo.GetType().ToString().Split('.').ElementAt(1);
         }
 
-        public bool setValor(string pValor)
-        {
-            objetoDatos.valorCodificacion = pValor;
+        public string[] getNombresTraductores() {
+            return getNombreAlgoritmosEnArray(traductores);
         }
-        public string getFrase(string pFrase)
-        {
-            return objetoDatos.Frase;
+
+        public string[] getNombresPersistencia() {
+            return getNombreAlgoritmosEnArray(persistencia);
         }
-        public string getValor(string pFrase)
-        {
-            return objetoDatos.Valor;
+
+        public string[] getNombreAlgoritmosEnArray(Object[] elem) {
+            List<string> nombres = new List<string>();
+            for(int indice = 0; indice < elem.Length; indice++) {
+                nombres.Add(getNombreAlgoritmo(elem.ElementAt(indice)));
+            }
+            return nombres.ToArray();
         }
-        */
+
+       
 
     }
 }
