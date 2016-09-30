@@ -17,7 +17,7 @@ namespace CriptoSystem
         public override bool guardarArchivo( )
         {
 
-            String nombreArchivo = "swagArchivo.pdf";
+            String nombreArchivo = "ArchivoPdf.pdf";
 
 
             if (!File.Exists(nombreArchivo))

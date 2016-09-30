@@ -57,6 +57,7 @@
     <Compile Include="Alfabeto.cs" />
     <Compile Include="App.cs" />
     <Compile Include="CBinaria.cs" />
+    <Compile Include="XML.cs" />
     <Compile Include="ControladorConsola.cs" />
     <Compile Include="ControladorEscritorio.cs" />
     <Compile Include="Datos.cs" />

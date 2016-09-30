@@ -13,7 +13,7 @@ namespace CriptoSystem
     
         public override bool guardarArchivo()
         {
-            String nombreArchivo = "swagtexto.txt";
+            String nombreArchivo = "ArchivoTexto.txt";
             String[] pTexto = { Dto.getDatos() };
             if (!File.Exists(nombreArchivo))
             {
