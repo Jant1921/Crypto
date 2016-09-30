@@ -6,14 +6,23 @@ using System.Threading.Tasks;
 
 namespace CriptoSystem
 {
-    class Alfabeto
-    {
-        public string caracteres;
-        public string nombre;
-        public Alfabeto(string pCaracteres = "abcdefghijklmnopqrstuvwxyz", string pNombre = "abc")
+    class Alfabeto{
+        private string caracteres;
+        private string nombre;
+        public Alfabeto(string pCaracteres = "abcdefghijklmnopqrstuvwxyz", string pNombre = "abcedario")
         {
-            caracteres = pCaracteres;
-            nombre = pNombre;
+            Caracteres = pCaracteres;
+            Nombre = pNombre;
+        }
+
+        public string Caracteres{
+            get { return caracteres; }
+            set { caracteres = value; }
+        }
+
+        public string Nombre {
+            get { return nombre; }
+            set { nombre = value; }
         }
     }
 }
