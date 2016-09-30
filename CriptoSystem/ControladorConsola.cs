@@ -8,8 +8,7 @@ namespace CriptoSystem
 {
     class ControladorConsola:CryptoSystem
     {
-
-
+        
 
     }
 }
