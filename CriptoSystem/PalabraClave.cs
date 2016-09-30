@@ -8,10 +8,11 @@ namespace CriptoSystem
 {
     class PalabraClave : Traductor
     {
+        private string pValor;
+
         public override void codificar(){
-            Alfabeto = Dto.Alfabeto.Caracteres;
-            string pTexto = Dto.FraseOriginal;
-            string pValor = Dto.ValorCodificacion;
+            cargarDatos();
+            Dto.TipoTraduccion = "Codificacion";
             string res = "";
             string[] arregloPalabras = pTexto.Split(' ');
             for (int i = 0; i < arregloPalabras.Length; i++)
@@ -27,9 +28,8 @@ namespace CriptoSystem
         }
 
         public override void decodificar(){
-            Alfabeto = Dto.Alfabeto.Caracteres;
-            string pTexto = Dto.FraseOriginal;
-            string pValor = Dto.ValorCodificacion;
+            cargarDatos();
+            Dto.TipoTraduccion = "Decodificacion";
             string res = "";
             string[] arregloPalabras = pTexto.Split(' ');
             for (int i = 0; i < arregloPalabras.Length; i++)
@@ -50,6 +50,13 @@ namespace CriptoSystem
             }
 
             Dto.FraseResultado = res;
+        }
+
+        protected override void cargarDatos() {
+            Alfabeto = Dto.Alfabeto.Caracteres;
+            pTexto = Dto.FraseOriginal;
+            pValor = Dto.ValorCodificacion;
+            Dto.NombreAlgoritmo = "Palabra Clave";
         }
     }
 }

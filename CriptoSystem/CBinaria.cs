@@ -44,8 +44,8 @@ namespace CriptoSystem
                 return ceros(res);
         }
         public override void codificar(){
-            Alfabeto = Dto.Alfabeto.Caracteres;
-            string pTexto = Dto.FraseOriginal;
+            cargarDatos();
+            Dto.TipoTraduccion = "Codificacion";
             string res = "";
             for(int i = 0; i < pTexto.Length; i++)
             {
@@ -79,8 +79,8 @@ namespace CriptoSystem
         }
 
         public override void decodificar(){
-            Alfabeto = Dto.Alfabeto.Caracteres;
-            string pTexto = Dto.FraseOriginal;
+            cargarDatos();
+            Dto.TipoTraduccion = "Decodificacion";
             string[] numeros = pTexto.Split(' ');
             string res = "";
             for(int i = 0; i < numeros.Length-1; i++)
@@ -96,6 +96,11 @@ namespace CriptoSystem
             Dto.FraseResultado = res;
         }
 
+        protected override void cargarDatos() {
+            Alfabeto = Dto.Alfabeto.Caracteres;
+            pTexto = Dto.FraseOriginal;
+            Dto.NombreAlgoritmo = "Codificacion Binaria";
+        }
 
     }
 }

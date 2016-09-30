@@ -9,8 +9,8 @@ namespace CriptoSystem
     class Transposicion : Traductor
     {
         public override void codificar(){
-            Alfabeto = Dto.Alfabeto.Caracteres;
-            string pTexto = Dto.FraseOriginal;
+            cargarDatos();
+            Dto.TipoTraduccion = "Codificacion";
             string[] temp = pTexto.Split(' ');
             string res = "";
             for(int i = 0; i < temp.Length; i++)
@@ -27,8 +27,15 @@ namespace CriptoSystem
         public override void decodificar()
         {
             codificar();
+            Dto.TipoTraduccion = "Decodificacion";
         }
 
+
+        protected override void cargarDatos() {
+            Alfabeto = Dto.Alfabeto.Caracteres;
+            pTexto = Dto.FraseOriginal;
+            Dto.NombreAlgoritmo = "Transposicion";
+        }
 
     }
 }

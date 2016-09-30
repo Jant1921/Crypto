@@ -11,10 +11,18 @@ namespace CriptoSystem
         private string fecha;
         private string fraseOriginal;
         private string fraseResultado;
-        private bool codifica;
+        private string tipoTraduccion;  //codificacion o decodificacion
         private string nombreAlgoritmo;
         private string valorCodificacion;
         private Alfabeto alfabeto;
+
+        public string getDatos() {
+            return "Fecha: " + Fecha + "\n" +
+                   "Algoritmo: " + nombreAlgoritmo + "\n" +
+                   "Tipo de Traduccion: " + TipoTraduccion + "\n" +
+                   "Frase Original: " + FraseOriginal + "\n" +
+                   "Resultado: " + FraseResultado + "\n";
+        }
 
         public string Fecha {
             get { return fecha; }
@@ -31,9 +39,9 @@ namespace CriptoSystem
             set { fraseResultado= value; }
         }
 
-        public bool Codifica{
-            get { return codifica; }
-            set { codifica = value; }
+        public string TipoTraduccion{
+            get { return tipoTraduccion; }
+            set { tipoTraduccion = value; }
         }
 
         public string NombreAlgoritmo{
