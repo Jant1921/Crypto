@@ -83,6 +83,7 @@ namespace CriptoSystem {
                     }
                 }
                 catch {
+
                     Console.WriteLine("No ha ingresado un caracter valido");
                 }
             }

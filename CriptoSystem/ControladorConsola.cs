@@ -12,6 +12,9 @@ namespace CriptoSystem
             listaDatos.FraseOriginal = pTexto;
             listaDatos.Fecha = DateTime.Now.ToString();
             traductores.ElementAt(pTipoAlgoritmo).codificar();
+            
+            persistencia.ElementAt(1).guardarArchivo();
+            
             persistencia.ElementAt(0).guardarArchivo();
 
         }
@@ -20,6 +23,8 @@ namespace CriptoSystem
             listaDatos.FraseOriginal = pTexto;
             listaDatos.Fecha = DateTime.Now.ToString();
             traductores.ElementAt(pTipoAlgoritmo).decodificar();
+            persistencia.ElementAt(1).guardarArchivo();
+           
             persistencia.ElementAt(0).guardarArchivo();
         }
 
