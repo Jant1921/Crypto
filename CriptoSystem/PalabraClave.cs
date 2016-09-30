@@ -8,51 +8,48 @@ namespace CriptoSystem
 {
     class PalabraClave : Traductor
     {
-        public string alfabeto = "abcdefghijklmnopqrstuvwxyz";
-        public override string tipoValor()
-        {
-            string p = "";
-            return p.GetType().ToString().Split('.')[p.GetType().ToString().Split('.').Length - 1] ;
-        }
-
-        public override string codificar(string pTexto, string pValor)
-        {
+        public override void codificar(){
+            Alfabeto = Dto.Alfabeto.Caracteres;
+            string pTexto = Dto.FraseOriginal;
+            string pValor = Dto.ValorCodificacion;
             string res = "";
             string[] arregloPalabras = pTexto.Split(' ');
             for (int i = 0; i < arregloPalabras.Length; i++)
             {
                 for (int j = 0; j < arregloPalabras[i].Length; j++)
                 {
-                    res = res + alfabeto.ElementAt((alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) + 1 + (alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length)))) % alfabeto.Length);
+                    res = res + Alfabeto.ElementAt((Alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) + 1 + (Alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length)))) % Alfabeto.Length);
                 }
                 res = res + " ";
             }
 
-            return res;
+            Dto.FraseResultado = res;
         }
 
-        public override string decodificar(string pTexto, string pValor)
-        {
+        public override void decodificar(){
+            Alfabeto = Dto.Alfabeto.Caracteres;
+            string pTexto = Dto.FraseOriginal;
+            string pValor = Dto.ValorCodificacion;
             string res = "";
             string[] arregloPalabras = pTexto.Split(' ');
             for (int i = 0; i < arregloPalabras.Length; i++)
             {
                 for (int j = 0; j < arregloPalabras[i].Length; j++)
                 {
-                    if (0 > (alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length)))) % alfabeto.Length)
+                    if (0 > (Alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (Alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length)))) % Alfabeto.Length)
                     {
-                        res = res + alfabeto.ElementAt((alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length))) + alfabeto.Length));
+                        res = res + Alfabeto.ElementAt((Alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (Alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length))) + Alfabeto.Length));
                     }
                     else
                     {
-                        res = res + alfabeto.ElementAt((alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length)))));
+                        res = res + Alfabeto.ElementAt((Alfabeto.IndexOf(arregloPalabras[i].ElementAt(j)) - 1 - (Alfabeto.IndexOf(pValor.ElementAt(j % pValor.Length)))));
                     }
 
                 }
                 res = res + " ";
             }
 
-            return res;
+            Dto.FraseResultado = res;
         }
     }
 }

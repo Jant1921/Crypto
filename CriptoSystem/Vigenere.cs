@@ -8,15 +8,9 @@ namespace CriptoSystem
 {
     class Vigenere : Traductor
     {
-        public string alfabeto = "abcdefghijklmnopqrstuvwxyz";
-        private Datos dto;
-
-        public Datos Dto {
-            get { return dto; }
-            set { dto = value; }
-        }
         
-        public override void codificar(){
+        public override void codificar() {
+            Alfabeto = Dto.Alfabeto.Caracteres;
             string pTexto = Dto.FraseOriginal;
             string pValor = Dto.ValorCodificacion;
             int val = Int32.Parse(pValor);
@@ -35,12 +29,12 @@ namespace CriptoSystem
                 {
                     if (flag)
                     {
-                        res = res + alfabeto.ElementAt((alfabeto.IndexOf(pTexto.ElementAt(i)) + primero) % alfabeto.Length);
+                        res = res + Alfabeto.ElementAt((Alfabeto.IndexOf(pTexto.ElementAt(i)) + primero) % Alfabeto.Length);
                         flag = false;
                     }
                     else
                     {
-                        res = res + alfabeto.ElementAt((alfabeto.IndexOf(pTexto.ElementAt(i)) + segundo) % alfabeto.Length);
+                        res = res + Alfabeto.ElementAt((Alfabeto.IndexOf(pTexto.ElementAt(i)) + segundo) % Alfabeto.Length);
                         flag = true;
                     }
                 }
@@ -49,6 +43,7 @@ namespace CriptoSystem
         }
 
         public override void decodificar(){
+            Alfabeto = Dto.Alfabeto.Caracteres;
             string pTexto = Dto.FraseOriginal;
             string pValor = Dto.ValorCodificacion;
             int val = Int32.Parse(pValor);
@@ -67,25 +62,25 @@ namespace CriptoSystem
                 {
                     if (flag)
                     {
-                        if ((alfabeto.IndexOf(pTexto.ElementAt(i)) - primero < 0))
+                        if ((Alfabeto.IndexOf(pTexto.ElementAt(i)) - primero < 0))
                         {
-                            res = res + alfabeto.ElementAt((alfabeto.IndexOf(pTexto.ElementAt(i)) - primero + alfabeto.Length));
+                            res = res + Alfabeto.ElementAt((Alfabeto.IndexOf(pTexto.ElementAt(i)) - primero + Alfabeto.Length));
                         }
                         else
                         {
-                            res = res + alfabeto.ElementAt((alfabeto.IndexOf(pTexto.ElementAt(i)) - primero));
+                            res = res + Alfabeto.ElementAt((Alfabeto.IndexOf(pTexto.ElementAt(i)) - primero));
                         }
                         flag = false;
                     }
                     else
                     {
-                        if ((alfabeto.IndexOf(pTexto.ElementAt(i)) - segundo < 0))
+                        if ((Alfabeto.IndexOf(pTexto.ElementAt(i)) - segundo < 0))
                         {
-                            res = res + alfabeto.ElementAt((alfabeto.IndexOf(pTexto.ElementAt(i)) - segundo + alfabeto.Length));
+                            res = res + Alfabeto.ElementAt((Alfabeto.IndexOf(pTexto.ElementAt(i)) - segundo + Alfabeto.Length));
                         }
                         else
                         {
-                            res = res + alfabeto.ElementAt((alfabeto.IndexOf(pTexto.ElementAt(i)) - segundo));
+                            res = res + Alfabeto.ElementAt((Alfabeto.IndexOf(pTexto.ElementAt(i)) - segundo));
                         }
                         flag = true;
                     }
@@ -93,5 +88,6 @@ namespace CriptoSystem
             }
             Dto.FraseResultado = res;
         }
+
     }
 }

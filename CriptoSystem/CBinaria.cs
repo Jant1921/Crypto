@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace CriptoSystem
 {
-    class CBinaria : Traductor
-    {
-        public string alfabeto = "abcdefghijklmnopqrstuvwxyz";
-
+    class CBinaria : Traductor{
+       
         string ceros(string texto)
         {
             string res = "";
@@ -29,7 +27,7 @@ namespace CriptoSystem
         string convertirNumABinario(string letra)
         {
             string res = "";
-            int numAsociado = alfabeto.IndexOf(letra.ElementAt(0));
+            int numAsociado = Alfabeto.IndexOf(letra.ElementAt(0));
 
                 while (numAsociado > 0)
                 {
@@ -45,8 +43,9 @@ namespace CriptoSystem
                 }
                 return ceros(res);
         }
-        public override string codificar(string pTexto, string pValor)
-        {
+        public override void codificar(){
+            Alfabeto = Dto.Alfabeto.Caracteres;
+            string pTexto = Dto.FraseOriginal;
             string res = "";
             for(int i = 0; i < pTexto.Length; i++)
             {
@@ -59,7 +58,7 @@ namespace CriptoSystem
                 }
 
             }
-            return res;
+            Dto.FraseResultado = res;
             
         }
 
@@ -79,8 +78,9 @@ namespace CriptoSystem
             return numero;
         }
 
-        public override string decodificar(string pTexto, string pValor)
-        {
+        public override void decodificar(){
+            Alfabeto = Dto.Alfabeto.Caracteres;
+            string pTexto = Dto.FraseOriginal;
             string[] numeros = pTexto.Split(' ');
             string res = "";
             for(int i = 0; i < numeros.Length-1; i++)
@@ -90,16 +90,12 @@ namespace CriptoSystem
                     res = res + " ";
                 }else
                 {
-                    res = res + alfabeto.ElementAt(BinADec(numeros[i]));
+                    res = res + Alfabeto.ElementAt(BinADec(numeros[i]));
                 }
             }
-            return res;
+            Dto.FraseResultado = res;
         }
 
 
-        public override string tipoValor()
-        {
-            return null;
-        }
     }
 }

@@ -8,12 +8,22 @@ namespace CriptoSystem
 {
     abstract class Traductor
     {
-        Datos dto;
-        Traductor (Datos pDto) {
-            this.dto = pDto;
-        }
+        static Datos dto;
+        string alfabeto;
+        
         public abstract void codificar();
         public abstract void decodificar();
-        
+
+        public static Datos Dto {
+            get { return dto; }
+            set { dto = value; }
+        }
+
+        public string Alfabeto {
+            get { return alfabeto; }
+            set { alfabeto = value; }
+        }
+
+
     }
 }
