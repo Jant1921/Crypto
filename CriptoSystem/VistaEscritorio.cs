@@ -91,9 +91,11 @@ namespace CriptoSystem
             Vigenere vi = new Vigenere();
             Traductor.Dto = datos;
             Traductor.Dto.FraseOriginal = textBox1.Text;
+            datos.Fecha = DateTime.Now.ToString();
             Traductor.Dto.ValorCodificacion = "12";
             Alfabeto alfabeto = new Alfabeto("abcdefghijklmnopqrstuvwxyz","abc");
             Traductor.Dto.Alfabeto = alfabeto;
+
             if (Codificar.Checked)
             {
                 vi.codificar();
@@ -103,7 +105,7 @@ namespace CriptoSystem
             {
                 vi.decodificar();
             }
-            textBox3.Text = Traductor.Dto.FraseResultado;
+            textBox3.Text = Traductor.Dto.getDatos();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -119,6 +121,10 @@ namespace CriptoSystem
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void VistaEscritorio_Load(object sender, EventArgs e) {
 
         }
     }
