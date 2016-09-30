@@ -11,10 +11,8 @@ namespace CriptoSystem
         public override void codificar(string pTexto, int pTipoAlgoritmo) {
             listaDatos.FraseOriginal = pTexto;
             listaDatos.Fecha = DateTime.Now.ToString();
-            traductores.ElementAt(pTipoAlgoritmo).codificar();
-            
-            persistencia.ElementAt(1).guardarArchivo();
-            
+            traductores.ElementAt(pTipoAlgoritmo).codificar();            
+            persistencia.ElementAt(1).guardarArchivo();          
             persistencia.ElementAt(0).guardarArchivo();
 
         }

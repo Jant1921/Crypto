@@ -83,7 +83,7 @@ namespace CriptoSystem
             Dto.TipoTraduccion = "Decodificacion";
             string[] numeros = pTexto.Split(' ');
             string res = "";
-            for(int i = 0; i < numeros.Length-1; i++)
+            for(int i = 0; i < numeros.Length; i++)
             {
                 if (numeros[i] == "*")
                 {
