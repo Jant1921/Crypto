@@ -20,14 +20,16 @@ namespace CriptoSystem
         protected Fabrica fabrica;
         protected Alfabeto alfabeto;
 
+
         public CryptoSystem() {
             listaDatos = new Datos();
             alfabeto = SingletonAlfabeto.getInstance();
             fabrica = new Fabrica();
             listaDatos.Alfabeto = alfabeto;
             Traductor.Dto = listaDatos;
+            Persistencia.Dto = listaDatos;
             traductores = fabrica.getTraductores().ToArray();
-            persistencia = fabrica.getAlgoritmosPersistencia().ToArray();            
+            persistencia = fabrica.getAlgoritmosPersistencia().ToArray();
         }
 
 

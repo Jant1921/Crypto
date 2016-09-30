@@ -44,6 +44,11 @@ namespace CriptoSystem
 
             */
 
+            
+            //List<string> myCollection = new List<string>();
+            //myCollection.Add("puto");
+            //Pdf escribe = new CriptoSystem.Pdf();
+            //escribe.guardarArchivo();
             App.seleccionarVista();
                 
 

@@ -8,7 +8,14 @@ namespace CriptoSystem
 {
     abstract class Persistencia
     {
-        public abstract bool guardarArchivo(string nombreArchivo, string[] pTexto);
+        static Datos dto;
+        public static Datos Dto
+        {
+            get { return dto; }
+            set { dto = value; }
+        }
+
+        public abstract bool guardarArchivo();
         protected String componerString(String[] arrayString)
         {
             String temp = "";

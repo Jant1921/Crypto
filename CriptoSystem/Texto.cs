@@ -9,8 +9,10 @@ namespace CriptoSystem
 {
     class Texto : Persistencia
     {
-        public override bool guardarArchivo(string nombreArchivo, string[] pTexto)
+        public override bool guardarArchivo()
         {
+            String nombreArchivo = "";
+            String[] pTexto = { nombreArchivo };
             if (!File.Exists(nombreArchivo))
             {
                 System.IO.File.WriteAllLines(nombreArchivo, pTexto);

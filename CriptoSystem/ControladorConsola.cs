@@ -12,12 +12,15 @@ namespace CriptoSystem
             listaDatos.FraseOriginal = pTexto;
             listaDatos.Fecha = DateTime.Now.ToString();
             traductores.ElementAt(pTipoAlgoritmo).codificar();
+            persistencia.ElementAt(0).guardarArchivo();
+
         }
 
         public override void decodificar(string pTexto, int pTipoAlgoritmo) {
             listaDatos.FraseOriginal = pTexto;
             listaDatos.Fecha = DateTime.Now.ToString();
             traductores.ElementAt(pTipoAlgoritmo).decodificar();
+            persistencia.ElementAt(0).guardarArchivo();
         }
 
         public override string retornarResultado() {
