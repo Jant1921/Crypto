@@ -23,7 +23,7 @@ namespace CriptoSystem
 
         public string FraseOriginal {
             get { return fraseOriginal; }
-            set { FraseOriginal = value; }
+            set { fraseOriginal = value; }
         }
 
         public string FraseResultado{
