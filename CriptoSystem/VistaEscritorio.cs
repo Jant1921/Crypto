@@ -40,6 +40,7 @@ namespace CriptoSystem
             var handle = GetConsoleWindow();
             ShowWindow(handle, SW_HIDE);
             ShowDialog();
+            controlador.crearAlfabeto();
             
         }
 
@@ -80,6 +81,10 @@ namespace CriptoSystem
         {
             definirFrase();
             if(establecerAlgoritmo() == -1) {
+                return;
+            }
+            if(!controlador.verificarString(frase)) {
+                MessageBox.Show("Existen caracteres no pertenecientes al alfabeto establecido");
                 return;
             }
             establecerAlgoritmo();
@@ -149,6 +154,7 @@ namespace CriptoSystem
                 controlador.numeroPersistencia = temp[i];
                 controlador.guardar();
             }
+            
 
 
             textBox3.Text = controlador.retornarResultado();

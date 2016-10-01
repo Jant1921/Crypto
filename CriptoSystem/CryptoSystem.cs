@@ -33,6 +33,25 @@ namespace CriptoSystem
             persistencia = fabrica.getAlgoritmosPersistencia().ToArray();
         }
 
+        public void crearAlfabeto() {
+            alfabeto = SingletonAlfabeto.getInstance();
+        }
+        public void crearAlfabeto(string nombre, string caracteres) {
+            alfabeto = SingletonAlfabeto.getInstance();
+        }
+
+        public bool verificarString(string pTexto) {
+            for(int i = 0; i < pTexto.Length; i++) {
+                if(pTexto.ElementAt(i) == ' ') {
+                    continue;
+                }
+                if(!alfabeto.Caracteres.Contains("" + pTexto.ElementAt(i))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
 
         protected abstract bool guardarResultado(int pTipoArchivo);
         public abstract void codificar(string pTexto,int pTipoAlgoritmo);
