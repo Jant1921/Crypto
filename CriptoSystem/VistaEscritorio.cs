@@ -40,10 +40,8 @@ namespace CriptoSystem
             var handle = GetConsoleWindow();
             ShowWindow(handle, SW_HIDE);
             ShowDialog();
-
-       
+            
         }
-
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
