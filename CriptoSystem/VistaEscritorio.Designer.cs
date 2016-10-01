@@ -51,7 +51,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(503, 109);
             this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -105,7 +104,6 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(503, 121);
             this.textBox3.TabIndex = 7;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label4
             // 
@@ -134,7 +132,6 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(144, 108);
             this.listBox1.TabIndex = 10;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -152,7 +149,6 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(144, 124);
             this.checkedListBox1.TabIndex = 12;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -162,7 +158,6 @@
             this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Guardar en:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // VistaEscritorio
             // 
@@ -183,7 +178,6 @@
             this.Controls.Add(this.textBox1);
             this.Name = "VistaEscritorio";
             this.Text = "GUI";
-            this.Load += new System.EventHandler(this.VistaEscritorio_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

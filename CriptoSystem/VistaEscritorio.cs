@@ -100,10 +100,6 @@ namespace CriptoSystem
             return true;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         void definirFrase() {
             frase = textBox1.Text;
         }
@@ -159,26 +155,6 @@ namespace CriptoSystem
             }
 
 
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void VistaEscritorio_Load(object sender, EventArgs e) {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
-
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) {
-        }
-
-        private void label5_Click(object sender, EventArgs e) {
 
         }
     }
