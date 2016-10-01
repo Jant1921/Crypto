@@ -77,15 +77,15 @@ namespace CriptoSystem
             displayTime();
         }
 
-        private void traducir()
+        private bool traducir()
         {
             definirFrase();
             if(establecerAlgoritmo() == -1) {
-                return;
+                return false;
             }
             if(!controlador.verificarString(frase)) {
                 MessageBox.Show("Existen caracteres no pertenecientes al alfabeto establecido");
-                return;
+                return false;
             }
             establecerAlgoritmo();
 
@@ -97,6 +97,7 @@ namespace CriptoSystem
             {
                 controlador.decodificar(frase, numeroTraductor);
             }
+            return true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -148,16 +149,17 @@ namespace CriptoSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            traducir();
-            int[] temp = establecerPersistencia();
-            for(int i = 0; i < temp.Length; i++) {
-                controlador.numeroPersistencia = temp[i];
-                controlador.guardar();
+            if(traducir()){
+                int[] temp = establecerPersistencia();
+                for(int i = 0; i < temp.Length; i++) {
+                    controlador.numeroPersistencia = temp[i];
+                    controlador.guardar();
+                }
+                textBox3.Text = controlador.retornarResultado();
             }
-            
 
 
-            textBox3.Text = controlador.retornarResultado();
+
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -174,6 +176,10 @@ namespace CriptoSystem
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) {
+        }
+
+        private void label5_Click(object sender, EventArgs e) {
+
         }
     }
 }

@@ -49,7 +49,7 @@
             this.textBox1.Location = new System.Drawing.Point(108, 87);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(503, 80);
+            this.textBox1.Size = new System.Drawing.Size(503, 109);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -65,7 +65,7 @@
             // Codificar
             // 
             this.Codificar.AutoSize = true;
-            this.Codificar.Location = new System.Drawing.Point(646, 89);
+            this.Codificar.Location = new System.Drawing.Point(738, 363);
             this.Codificar.Name = "Codificar";
             this.Codificar.Size = new System.Drawing.Size(67, 17);
             this.Codificar.TabIndex = 2;
@@ -76,7 +76,7 @@
             // Decodificar
             // 
             this.Decodificar.AutoSize = true;
-            this.Decodificar.Location = new System.Drawing.Point(646, 112);
+            this.Decodificar.Location = new System.Drawing.Point(826, 363);
             this.Decodificar.Name = "Decodificar";
             this.Decodificar.Size = new System.Drawing.Size(80, 17);
             this.Decodificar.TabIndex = 3;
@@ -88,7 +88,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(525, 13);
+            this.label3.Location = new System.Drawing.Point(642, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 21);
             this.label3.TabIndex = 6;
@@ -100,10 +100,10 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(322, 223);
+            this.textBox3.Location = new System.Drawing.Point(108, 202);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(289, 121);
+            this.textBox3.Size = new System.Drawing.Size(503, 121);
             this.textBox3.TabIndex = 7;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
@@ -111,7 +111,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 223);
+            this.label4.Location = new System.Drawing.Point(635, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 8;
@@ -130,16 +130,16 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(77, 223);
+            this.listBox1.Location = new System.Drawing.Point(694, 87);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(144, 121);
+            this.listBox1.Size = new System.Drawing.Size(144, 108);
             this.listBox1.TabIndex = 10;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(258, 223);
+            this.label2.Location = new System.Drawing.Point(44, 202);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 11;
@@ -148,20 +148,21 @@
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(646, 250);
+            this.checkedListBox1.Location = new System.Drawing.Point(694, 202);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox1.Size = new System.Drawing.Size(144, 124);
             this.checkedListBox1.TabIndex = 12;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(646, 222);
+            this.label5.Location = new System.Drawing.Point(626, 205);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Guardar en";
+            this.label5.Text = "Guardar en:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // VistaEscritorio
             // 
