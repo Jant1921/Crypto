@@ -15,6 +15,9 @@ namespace CriptoSystem
 {
     public partial class VistaEscritorio : Form
     {
+        private int numeroTraductor;
+        private string frase = "";
+        private ControladorEscritorio controlador = new ControladorEscritorio();
 
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
@@ -32,27 +35,18 @@ namespace CriptoSystem
             Codificar.Checked = true;
             timer1.Enabled = true;
             textBox3.Enabled = false;
-            rellenarListaAlgoritmos();
-
-            
+            establecerListaAlgoritmos();
+            establecerListaPersistencia();
             var handle = GetConsoleWindow();
             ShowWindow(handle, SW_HIDE);
             ShowDialog();
-            //Show();
 
-
+       
         }
-        private void rellenarListaAlgoritmos()
-        {
-            listBox1.Items.Add("Vigenere");
-            listBox1.Items.Add("Transposicion");
 
-        }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
-
             if (Codificar.Checked)
             {
                 Decodificar.Checked = false;
@@ -72,7 +66,6 @@ namespace CriptoSystem
             {
                 Codificar.Checked = true;
             }
-            traducir();
         }
 
         private void displayTime()
@@ -87,36 +80,80 @@ namespace CriptoSystem
 
         private void traducir()
         {
-            Datos datos = new Datos();
-            Vigenere vi = new Vigenere();
-            Traductor.Dto = datos;
-            Traductor.Dto.FraseOriginal = textBox1.Text;
-            datos.Fecha = DateTime.Now.ToString();
-            Traductor.Dto.ValorCodificacion = "12";
-            Alfabeto alfabeto = new Alfabeto("abcdefghijklmnopqrstuvwxyz","abc");
-            Traductor.Dto.Alfabeto = alfabeto;
+            definirFrase();
+            if(establecerAlgoritmo() == -1) {
+                return;
+            }
+            establecerAlgoritmo();
 
             if (Codificar.Checked)
             {
-                vi.codificar();
-                
-            }
-            else
+                controlador.codificar(frase, numeroTraductor);
+
+            } else
             {
-                vi.decodificar();
+                controlador.decodificar(frase, numeroTraductor);
             }
-            textBox3.Text = Traductor.Dto.getDatos();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
+        void definirFrase() {
+            frase = textBox1.Text;
+        }
+
+        void establecerListaAlgoritmos() {
+            bool continuar = true;
+            string[] listaNombresTraductores = controlador.getNombresTraductores();
+            int cantidadTraductores = listaNombresTraductores.Length;
+            string nombresTraductores = "";
+
+            for(int posicion = 0; posicion < cantidadTraductores; posicion++) {
+                listBox1.Items.Add(listaNombresTraductores.ElementAt(posicion));
+            }
+            
+        }
+
+        void establecerListaPersistencia() {
+            bool continuar = true;
+            string[] listaNombresPersistencia = controlador.getNombresPersistencia();
+            int cantidadTraductores = listaNombresPersistencia.Length;
+            string nombresTraductores = "";
+
+            for(int posicion = 0; posicion < cantidadTraductores; posicion++) {
+                checkedListBox1.Items.Add(listaNombresPersistencia.ElementAt(posicion));
+            }
+            
+
+        }
+
+        int establecerAlgoritmo() {
+            numeroTraductor = listBox1.SelectedIndex;
+            if(numeroTraductor == -1) {
+                MessageBox.Show("Debe de seleccionar al menos un algoritmo");
+            }
+            return numeroTraductor;
+        }
+
+        int[] establecerPersistencia() {
+            int[] res = new int[checkedListBox1.CheckedIndices.Count];
+            checkedListBox1.CheckedIndices.CopyTo(res, 0);
+            return res;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             traducir();
-           
+            int[] temp = establecerPersistencia();
+            for(int i = 0; i < temp.Length; i++) {
+                controlador.numeroPersistencia = temp[i];
+                controlador.guardar();
+            }
+
+
+            textBox3.Text = controlador.retornarResultado();
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -126,6 +163,13 @@ namespace CriptoSystem
 
         private void VistaEscritorio_Load(object sender, EventArgs e) {
 
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) {
         }
     }
 }

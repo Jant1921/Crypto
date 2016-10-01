@@ -7,20 +7,31 @@ using System.Threading.Tasks;
 namespace CriptoSystem
 {
     class ControladorEscritorio : CryptoSystem {
+        public int numeroPersistencia;
+
         public override void codificar(string pTexto, int pTipoAlgoritmo) {
-            throw new NotImplementedException();
+            listaDatos.FraseOriginal = pTexto;
+            listaDatos.Fecha = DateTime.Now.ToString();
+            traductores.ElementAt(pTipoAlgoritmo).codificar();
         }
 
         public override void decodificar(string pTexto, int pTipoAlgoritmo) {
-            throw new NotImplementedException();
+            listaDatos.FraseOriginal = pTexto;
+            listaDatos.Fecha = DateTime.Now.ToString();
+            traductores.ElementAt(pTipoAlgoritmo).decodificar();
         }
 
         public override string retornarResultado() {
-            throw new NotImplementedException();
+            return listaDatos.FraseResultado;
         }
 
+
         protected override bool guardarResultado(int pTipoArchivo) {
-            throw new NotImplementedException();
+            return persistencia.ElementAt(pTipoArchivo).guardarArchivo();
+        }
+
+        public void guardar() {
+            guardarResultado(numeroPersistencia);
         }
 
     }
