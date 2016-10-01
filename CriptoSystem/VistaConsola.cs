@@ -54,6 +54,15 @@ namespace CriptoSystem {
         }
 
         void definirFrase() {
+            
+            definirFrase_Aux();
+            while(!controlador.verificarString(frase)) {
+                Console.WriteLine("La frase contiene caracteres no pertenecientes al alfabeto");
+                definirFrase_Aux();
+            }
+            
+        }
+        void definirFrase_Aux() {
             Console.WriteLine("Ingrese la frase a traducir: ");
             frase = Console.ReadLine();
             Console.WriteLine();
