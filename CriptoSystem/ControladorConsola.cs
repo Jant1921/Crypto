@@ -8,26 +8,22 @@ namespace CriptoSystem
 {
     class ControladorConsola:CryptoSystem
     {
+
+        public int numeroPersistencia;
+
         public override void codificar(string pTexto, int pTipoAlgoritmo) {
             listaDatos.FraseOriginal = pTexto;
             listaDatos.Fecha = DateTime.Now.ToString();
             traductores.ElementAt(pTipoAlgoritmo).codificar();
-
-
-            persistencia.ElementAt(1).guardarArchivo();
-
-            
+            guardarResultado(numeroPersistencia);
         }
 
         public override void decodificar(string pTexto, int pTipoAlgoritmo) {
             listaDatos.FraseOriginal = pTexto;
             listaDatos.Fecha = DateTime.Now.ToString();
             traductores.ElementAt(pTipoAlgoritmo).decodificar();
-
-
-            persistencia.ElementAt(1).guardarArchivo();
-
-
+            persistencia.ElementAt(numeroPersistencia).guardarArchivo();
+            guardarResultado(numeroPersistencia);
         }
 
         public override string retornarResultado() {
@@ -35,7 +31,7 @@ namespace CriptoSystem
         }
 
         protected override bool guardarResultado(int pTipoArchivo) {
-            throw new NotImplementedException();
+            return persistencia.ElementAt(pTipoArchivo).guardarArchivo();
         }
 
         

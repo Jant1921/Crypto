@@ -21,6 +21,7 @@ namespace CriptoSystem
         protected Alfabeto alfabeto;
 
 
+
         public CryptoSystem() {
             listaDatos = new Datos();
             alfabeto = SingletonAlfabeto.getInstance();

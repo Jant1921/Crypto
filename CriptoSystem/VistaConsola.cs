@@ -20,7 +20,8 @@ namespace CriptoSystem {
             bool continuar = true;
             while(continuar) {
                 Console.WriteLine("1. Definir Frase a Traducir\n" +
-                                  "2. Elegir Algoritmo\n" +
+                                  "2. Definir formato archivo de salida\n"+
+                                  "3. Elegir Algoritmos de traduccion\n" +
                                   "0. Salir\n\n" +
                                   "Seleccione una opcion: ");
                 try {
@@ -32,6 +33,9 @@ namespace CriptoSystem {
                             definirFrase();
                             break;
                         case "2":
+                            algoritmosPersistencia();
+                            break;
+                        case "3":
                             traductores();
                             break;
                         case "0":
@@ -78,6 +82,7 @@ namespace CriptoSystem {
                     else {
                         numeroTraductor--;
                         if(0 <= numeroTraductor && numeroTraductor <= cantidadTraductores) {
+
                             tipoTraduccion();
                         }
                     }
@@ -89,6 +94,36 @@ namespace CriptoSystem {
             }
         }
 
+        void algoritmosPersistencia() {
+            bool continuar = true;
+            string[] listaNombresPersistenca = controlador.getNombresPersistencia();
+            int cantidadAlgoritmos = listaNombresPersistenca.Length;
+            string nombresPersistencia = "";
+            for(int posicion = 0; posicion < cantidadAlgoritmos; posicion++) {
+                nombresPersistencia += posicion + 1 + ". " + listaNombresPersistenca.ElementAt(posicion) + "\n";
+            }
+            nombresPersistencia += "0. Volver\n";
+            while(continuar) {
+                Console.Write("Tipos de archivos disponibles: \n\n" +
+                              nombresPersistencia + "\n\n" +
+                              "Seleccione el tipo a utilizar: \n");
+                try {
+                    int numeroPersistencia = Int16.Parse(Console.ReadLine());
+                    if(numeroPersistencia == 0) {
+                        continuar = false;
+                    }
+                    else {
+                        numeroPersistencia--;
+                        if(0 <= numeroPersistencia && numeroPersistencia <= cantidadAlgoritmos) {
+                            controlador.numeroPersistencia = numeroPersistencia;
+                        }
+                    }
+                }
+                catch {
+                    Console.WriteLine("No ha ingresado un caracter valido");
+                }
+            }
+        }
 
 
         void tipoTraduccion() {
