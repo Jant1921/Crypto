@@ -27,7 +27,7 @@ namespace CriptoSystem
                     xmlWriter.WriteElementString("Ejecucion", Dto.getDatos());
                     
                     xmlWriter.WriteEndElement();
-                    xmlWriter.WriteEndElement();
+                    
                     xmlWriter.WriteEndDocument();
                     xmlWriter.Flush();
                     xmlWriter.Close();
