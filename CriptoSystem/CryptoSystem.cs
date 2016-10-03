@@ -17,7 +17,7 @@ namespace CriptoSystem
 
         public CryptoSystem() {
             listaDatos = new Datos();
-            alfabeto = SingletonAlfabeto.getInstance();
+            crearAlfabeto();
             fabrica = new Fabrica();
             listaDatos.Alfabeto = alfabeto;
             Traductor.Dto = listaDatos;
@@ -29,9 +29,7 @@ namespace CriptoSystem
         public void crearAlfabeto() {
             alfabeto = SingletonAlfabeto.getInstance();
         }
-        public void crearAlfabeto(string nombre, string caracteres) {
-            alfabeto = SingletonAlfabeto.getInstance();
-        }
+        
 
         public bool verificarString(string pTexto) {
             char[] exceptions = { ' ', '1', '0', '*' };
