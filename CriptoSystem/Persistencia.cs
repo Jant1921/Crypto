@@ -9,6 +9,7 @@ namespace CriptoSystem
     abstract class Persistencia
     {
         static Datos dto;
+        public string nombreArchivo;
         public static Datos Dto
         {
             get { return dto; }
@@ -16,15 +17,5 @@ namespace CriptoSystem
         }
 
         public abstract bool guardarArchivo();
-        protected String componerString(String[] arrayString)
-        {
-            String temp = "";
-            for (int i = 0; i < arrayString.Length; i++)
-            {
-                temp = temp + arrayString[i] + "\n";
-            }
-            return temp;
-        }
-
     }
 }

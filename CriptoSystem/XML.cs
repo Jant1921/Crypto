@@ -11,12 +11,10 @@ namespace CriptoSystem
 {
     class XML : Persistencia
     {
-        String nombreArchivo = "ArchivoXml.xml";
-        
-
         public override bool guardarArchivo()
         {
-            if (!File.Exists(nombreArchivo) )
+            nombreArchivo = "ArchivoXml.xml";
+            if(!File.Exists(nombreArchivo) )
             {
                 XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
                 xmlWriterSettings.Indent = true;
@@ -51,11 +49,5 @@ namespace CriptoSystem
             return false;
 
         }
-
-
-
-
-
-
     }
 }

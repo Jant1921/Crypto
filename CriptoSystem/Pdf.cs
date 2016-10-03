@@ -14,61 +14,49 @@ namespace CriptoSystem
     {
 
 
-        public override bool guardarArchivo( )
-        {
+        public override bool guardarArchivo() {
 
-            String nombreArchivo = "ArchivoPdf.pdf";
+            nombreArchivo = "ArchivoPdf.pdf";
 
+            try {
+                if(!File.Exists(nombreArchivo)) {
+                    String pTexto = Dto.getDatos();
+                    Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
+                    PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(nombreArchivo, FileMode.Create));
+                    doc.Open();
+                    Paragraph paragraph = new Paragraph(pTexto);
 
-            if (!File.Exists(nombreArchivo))
-            {
-                String[] pTexto = { Dto.getDatos()};
-                Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
-                PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(nombreArchivo, FileMode.Create));
-                doc.Open();
-                Paragraph paragraph = new Paragraph(componerString(pTexto));
-
-                doc.Add(paragraph);
-                doc.Close();
-                return true;
-            }
-            else {
-
-                PdfReader reader = new PdfReader(nombreArchivo);
-                string text = string.Empty;
-                for (int page = 1; page <= reader.NumberOfPages; page++)
-                {
-                    text += PdfTextExtractor.GetTextFromPage(reader, page);
+                    doc.Add(paragraph);
+                    doc.Close();
+                    return true;
                 }
-                reader.Close();
+                else {
 
-               
-                String[] pTexto = { text,Dto.getDatos() };
-                Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
-                PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(nombreArchivo, FileMode.Create));
-                doc.Open();
- 
-                Paragraph paragraph = new Paragraph(componerString(pTexto));
+                    PdfReader reader = new PdfReader(nombreArchivo);
+                    string text = string.Empty;
+                    for(int page = 1; page <= reader.NumberOfPages; page++) {
+                        text += PdfTextExtractor.GetTextFromPage(reader, page);
+                    }
+                    reader.Close();
 
-                doc.Add(paragraph);
-                doc.Close();
-                return true;
+
+                    String pTexto = text + '\n' + Dto.getDatos();
+                    Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
+                    PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(nombreArchivo, FileMode.Create));
+                    doc.Open();
+
+                    Paragraph paragraph = new Paragraph(pTexto);
+
+                    doc.Add(paragraph);
+                    doc.Close();
+                    return true;
+                }
+            }
+            catch(Exception e) {
+                Console.WriteLine(e);
+                return false;
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-            return false;
         }
 
 

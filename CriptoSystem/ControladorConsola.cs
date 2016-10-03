@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CriptoSystem
 {
     class ControladorConsola:CryptoSystem
     {
-
         public int numeroPersistencia;
 
         public override void codificar(string pTexto, int pTipoAlgoritmo) {
