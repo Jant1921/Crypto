@@ -20,7 +20,7 @@ namespace CriptoSystem
 
             try {
                 if(!File.Exists(nombreArchivo)) {
-                    String pTexto = Dto.getDatos();
+                    string pTexto = Dto.getDatos()+'\n';
                     Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
                     PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(nombreArchivo, FileMode.Create));
                     doc.Open();
@@ -40,7 +40,7 @@ namespace CriptoSystem
                     reader.Close();
 
 
-                    String pTexto = text + '\n' + Dto.getDatos();
+                    string pTexto = text + '\n' + Dto.getDatos()+'\n';
                     Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 42, 35);
                     PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(nombreArchivo, FileMode.Create));
                     doc.Open();

@@ -14,39 +14,44 @@ namespace CriptoSystem
         public override bool guardarArchivo()
         {
             nombreArchivo = "ArchivoXml.xml";
-            if(!File.Exists(nombreArchivo) )
-            {
-                XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
-                xmlWriterSettings.Indent = true;
-                xmlWriterSettings.NewLineOnAttributes = true;
-                using (XmlWriter xmlWriter = XmlWriter.Create(nombreArchivo, xmlWriterSettings))
-                {
-                    xmlWriter.WriteStartDocument();
-                    xmlWriter.WriteStartElement("Ejecuciones");
 
-                    xmlWriter.WriteElementString("Ejecucion", Dto.getDatos());
-                    
-                    xmlWriter.WriteEndElement();
-                    
-                    xmlWriter.WriteEndDocument();
-                    xmlWriter.Flush();
-                    xmlWriter.Close();
+            try {
+                if(!File.Exists(nombreArchivo)) {
+                    XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
+                    xmlWriterSettings.Indent = true;
+                    xmlWriterSettings.NewLineOnAttributes = true;
+                    using(XmlWriter xmlWriter = XmlWriter.Create(nombreArchivo, xmlWriterSettings)) {
+                        xmlWriter.WriteStartDocument();
+                        xmlWriter.WriteStartElement("Ejecuciones");
+
+                        xmlWriter.WriteElementString("Ejecucion", Dto.getDatos());
+
+                        xmlWriter.WriteEndElement();
+
+                        xmlWriter.WriteEndDocument();
+                        xmlWriter.Flush();
+                        xmlWriter.Close();
+                    }
                 }
+                else {
+                    XDocument xDocument = XDocument.Load(nombreArchivo);
+                    XElement root = xDocument.Element("Ejecuciones");
+                    IEnumerable<XElement> rows = root.Descendants("Ejecucion");
+                    XElement LastRow = rows.Last();
+                    LastRow.AddAfterSelf(
+
+                       new XElement("Ejecucion", Dto.getDatos())
+                       );
+
+                    xDocument.Save(nombreArchivo);
+                }
+                return true;
             }
-            else
-            {
-                XDocument xDocument = XDocument.Load(nombreArchivo);
-                XElement root = xDocument.Element("Ejecuciones");
-                IEnumerable<XElement> rows = root.Descendants("Ejecucion");
-                XElement LastRow = rows.Last();
-                LastRow.AddAfterSelf(
-                  
-                   new XElement("Ejecucion", Dto.getDatos())
-                   );
-                 
-                xDocument.Save(nombreArchivo);
+            catch(Exception e) {
+                Console.WriteLine(e);
+                return false;
             }
-            return false;
+            
 
         }
     }
