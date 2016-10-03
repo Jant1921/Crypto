@@ -34,8 +34,9 @@ namespace CriptoSystem
         }
 
         public bool verificarString(string pTexto) {
+            char[] exceptions = { ' ', '1', '0', '*' };
             for(int i = 0; i < pTexto.Length; i++) {
-                if(pTexto.ElementAt(i) == ' ') {
+                if( exceptions.Contains(pTexto.ElementAt(i))) {
                     continue;
                 }
                 if(!alfabeto.Caracteres.Contains("" + pTexto.ElementAt(i))) {
