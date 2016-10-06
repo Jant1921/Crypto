@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.IO;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System.Reflection;
 
 namespace CriptoSystem
 {
@@ -24,7 +17,7 @@ namespace CriptoSystem
 
         public CryptoSystem() {
             listaDatos = new Datos();
-            alfabeto = SingletonAlfabeto.getInstance();
+            crearAlfabeto();
             fabrica = new Fabrica();
             listaDatos.Alfabeto = alfabeto;
             Traductor.Dto = listaDatos;
@@ -36,13 +29,12 @@ namespace CriptoSystem
         public void crearAlfabeto() {
             alfabeto = SingletonAlfabeto.getInstance();
         }
-        public void crearAlfabeto(string nombre, string caracteres) {
-            alfabeto = SingletonAlfabeto.getInstance();
-        }
+        
 
         public bool verificarString(string pTexto) {
+            char[] exceptions = { ' ', '1', '0', '*' };
             for(int i = 0; i < pTexto.Length; i++) {
-                if(pTexto.ElementAt(i) == ' ') {
+                if( exceptions.Contains(pTexto.ElementAt(i))) {
                     continue;
                 }
                 if(!alfabeto.Caracteres.Contains("" + pTexto.ElementAt(i))) {

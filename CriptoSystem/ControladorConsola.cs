@@ -1,29 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CriptoSystem
 {
     class ControladorConsola:CryptoSystem
     {
-
-        public int numeroPersistencia;
+        List<int> formatosSalida=new List<int>();
 
         public override void codificar(string pTexto, int pTipoAlgoritmo) {
             listaDatos.FraseOriginal = pTexto;
             listaDatos.Fecha = DateTime.Now.ToString();
             traductores.ElementAt(pTipoAlgoritmo).codificar();
-            guardarResultado(numeroPersistencia);
+            escribirEnArchivos();
         }
 
         public override void decodificar(string pTexto, int pTipoAlgoritmo) {
             listaDatos.FraseOriginal = pTexto;
             listaDatos.Fecha = DateTime.Now.ToString();
             traductores.ElementAt(pTipoAlgoritmo).decodificar();
-            persistencia.ElementAt(numeroPersistencia).guardarArchivo();
-            guardarResultado(numeroPersistencia);
+            escribirEnArchivos();
         }
 
         public override string retornarResultado() {
@@ -34,6 +30,23 @@ namespace CriptoSystem
             return persistencia.ElementAt(pTipoArchivo).guardarArchivo();
         }
 
+        protected bool escribirEnArchivos() {
+            bool finalizadoConExito = true;
+            foreach(int tipo in formatosSalida) {
+                finalizadoConExito = guardarResultado(tipo);
+            }
+            return finalizadoConExito;
+        }
+
+        public void agregarTipoArchivo(int pTipo) {
+            if(!formatosSalida.Contains(pTipo)) {
+                formatosSalida.Add(pTipo);
+            }
+        }
+
+        public void limpiarArchivosSeleccionados() {
+            formatosSalida.Clear();
+        }
         
 
         
