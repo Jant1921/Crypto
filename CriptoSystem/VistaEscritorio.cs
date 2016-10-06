@@ -80,10 +80,15 @@ namespace CriptoSystem
         private bool traducir()
         {
             definirFrase();
+            if(establecerAlgoritmo() == -1) {
+                return false;
+            }
             if(!controlador.verificarString(frase)) {
                 MessageBox.Show("Existen caracteres no pertenecientes al alfabeto establecido");
                 return false;
             }
+            establecerAlgoritmo();
+
             if (Codificar.Checked)
             {
                 controlador.codificar(frase, numeroTraductor);
@@ -103,8 +108,10 @@ namespace CriptoSystem
             bool continuar = true;
             string[] listaNombresTraductores = controlador.getNombresTraductores();
             int cantidadTraductores = listaNombresTraductores.Length;
+            string nombresTraductores = "";
+
             for(int posicion = 0; posicion < cantidadTraductores; posicion++) {
-                checkedListBox2.Items.Add(listaNombresTraductores.ElementAt(posicion));
+                listBox1.Items.Add(listaNombresTraductores.ElementAt(posicion));
             }
             
         }
@@ -122,10 +129,12 @@ namespace CriptoSystem
 
         }
 
-        int[] establecerAlgoritmo() {
-            int[] res = new int[checkedListBox2.CheckedIndices.Count];
-            checkedListBox2.CheckedIndices.CopyTo(res, 0);
-            return res;
+        int establecerAlgoritmo() {
+            numeroTraductor = listBox1.SelectedIndex;
+            if(numeroTraductor == -1) {
+                MessageBox.Show("Debe de seleccionar al menos un algoritmo");
+            }
+            return numeroTraductor;
         }
 
         int[] establecerPersistencia() {
@@ -136,32 +145,17 @@ namespace CriptoSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int[] listaAlgoritmo = establecerAlgoritmo();
-
-            int[] listaPersistencia = establecerPersistencia();
-            if(listaAlgoritmo.Count() == 0) {
-                MessageBox.Show("Debe de seleccionar al menos un algoritmo");
-                return;
-            }
-            if(listaPersistencia.Count() == 0) {
-                MessageBox.Show("Debe de seleccionar al menos un metodo de persistencia");
-                return;
-            }
-
-            string[] lineas = new string[listaAlgoritmo.Count()];
-            for(int i = 0; i < listaAlgoritmo.Length; i++) {
-
-                numeroTraductor = listaAlgoritmo[i];
-                traducir();
-                for(int j = 0; j < listaPersistencia.Length; j++) {
-                    controlador.numeroPersistencia = listaPersistencia[j];
+            if(traducir()){
+                int[] temp = establecerPersistencia();
+                for(int i = 0; i < temp.Length; i++) {
+                    controlador.numeroPersistencia = temp[i];
                     controlador.guardar();
                 }
-                lineas[i] = controlador.getNombresTraductores().ElementAt(listaAlgoritmo[i]) + ": " + controlador.retornarResultado();
+                textBox3.Text = controlador.retornarResultado();
             }
-            textBox3.Lines=(lineas);
+
+
+
         }
-        
-        
     }
 }
