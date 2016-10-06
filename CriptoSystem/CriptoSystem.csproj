@@ -55,8 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alfabeto.cs" />
+    <Compile Include="AlgoritmoTelefonico.cs" />
     <Compile Include="App.cs" />
     <Compile Include="CBinaria.cs" />
+    <Compile Include="Dto.cs" />
     <Compile Include="Telefonico.cs" />
     <Compile Include="XML.cs" />
     <Compile Include="ControladorConsola.cs" />

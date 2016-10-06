@@ -30,7 +30,7 @@ namespace CriptoSystem {
 
 
         public bool verificarString(string pTexto) {
-            char[] exceptions = { ' ', '1', '0', '*' };
+            char[] exceptions = { ' ', '1', '0', '*','2','3','4','5', '6', '7', '8', '9'};
             for(int i = 0; i < pTexto.Length; i++) {
                 if(exceptions.Contains(pTexto.ElementAt(i))) {
                     continue;
