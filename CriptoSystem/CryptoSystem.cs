@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CriptoSystem
-{
-    abstract class CryptoSystem
-    {
+namespace CriptoSystem {
+    abstract class CryptoSystem {
 
         protected Traductor[] traductores;
         protected Persistencia[] persistencia;
@@ -29,12 +27,12 @@ namespace CriptoSystem
         public void crearAlfabeto() {
             alfabeto = SingletonAlfabeto.getInstance();
         }
-        
+
 
         public bool verificarString(string pTexto) {
             char[] exceptions = { ' ', '1', '0', '*' };
             for(int i = 0; i < pTexto.Length; i++) {
-                if( exceptions.Contains(pTexto.ElementAt(i))) {
+                if(exceptions.Contains(pTexto.ElementAt(i))) {
                     continue;
                 }
                 if(!alfabeto.Caracteres.Contains("" + pTexto.ElementAt(i))) {
@@ -46,7 +44,7 @@ namespace CriptoSystem
 
 
         protected abstract bool guardarResultado(int pTipoArchivo);
-        public abstract void codificar(string pTexto,int pTipoAlgoritmo);
+        public abstract void codificar(string pTexto, int pTipoAlgoritmo);
         public abstract void decodificar(string pTexto, int pTipoAlgoritmo);
         public abstract string retornarResultado();
 
@@ -70,7 +68,7 @@ namespace CriptoSystem
             return nombres.ToArray();
         }
 
-       
+
 
     }
 }

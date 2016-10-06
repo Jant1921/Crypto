@@ -1,12 +1,10 @@
 ﻿using System;
 
 namespace CriptoSystem {
-    class SingletonAlfabeto
-    {
+    class SingletonAlfabeto {
         private static Alfabeto alfabeto;
-        
-        private static Alfabeto crearAlfabeto()
-        {
+
+        private static Alfabeto crearAlfabeto() {
             try {
                 string[] lines = System.IO.File.ReadAllLines(@"alfabeto.config");
                 string[] campos = lines[0].Split(' ');
@@ -19,10 +17,8 @@ namespace CriptoSystem {
 
         }
 
-        public static Alfabeto getInstance()
-        {
-            if(alfabeto == null)
-            {
+        public static Alfabeto getInstance() {
+            if(alfabeto == null) {
                 alfabeto = crearAlfabeto();
             }
             return alfabeto;
